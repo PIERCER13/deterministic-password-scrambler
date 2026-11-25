@@ -1,0 +1,27 @@
+:root {
+  --bg: #0a0a0c; --surface: #141418; --surface-2: #1e1e24;
+  --border: #2a2a32; --text: #f4f4f5; --muted: #a1a1aa; --primary: #ef4444;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+.topbar { padding: 16px 24px; border-bottom: 1px solid var(--border); background: var(--surface); }
+h1 { font-size: 1.2rem; }
+h2 { font-size: 0.98rem; margin-bottom: 10px; }
+.subtitle { font-size: 0.82rem; color: var(--muted); }
+.layout { max-width: 1180px; margin: 0 auto; padding: 18px 24px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px; align-items: start; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+.field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 10px; }
+.field label { font-size: 0.76rem; color: var(--muted); font-weight: 600; }
+input, select { background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 0.86rem; outline: none; width: 100%; }
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.row-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.chk { display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: var(--muted); cursor: pointer; }
+.chk input { width: auto; }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.btn { border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 0.84rem; font-weight: 600; cursor: pointer; background: var(--surface-2); color: var(--text); }
+.btn-primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+.out-box { display: grid; grid-template-columns: 1fr auto auto; gap: 6px; margin-top: 12px; }
+.prof-list { display: flex; flex-direction: column; gap: 6px; }
+.prof-row { display: flex; justify-content: space-between; align-items: center; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; font-size: 0.84rem; cursor: pointer; }
+.prof-row:hover { border-color: var(--primary); }
+@media (max-width: 860px) { .layout, .row-3 { grid-template-columns: 1fr; } }

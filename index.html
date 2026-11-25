@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="piercer" />
+  <title>Piercer Deterministic Password Scrambler</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Piercer Deterministic Password Scrambler</h1>
+      <p class="subtitle">Gere senhas determinísticas (PBKDF2 + SHA-256/512) a partir de senha mestra + serviço sem armazenar senhas</p>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card">
+      <h2>Gerador Determinístico</h2>
+      <div class="field"><label>Senha Mestra (nunca é salva)</label><input type="password" id="masterPass" placeholder="Sua frase/senha mestra secreta" /></div>
+      <div class="row-2">
+        <div class="field"><label>Serviço / Domínio</label><input type="text" id="serviceName" value="github.com" /></div>
+        <div class="field"><label>Versão (Rotação)</label><input type="number" id="passVer" value="1" min="1" /></div>
+      </div>
+      <div class="row-3">
+        <div class="field"><label>Tamanho</label><input type="number" id="passLen" value="20" min="8" max="64" /></div>
+        <div class="field"><label>Algoritmo</label><select id="hashAlgo"><option value="SHA-256">PBKDF2-SHA256</option><option value="SHA-512">PBKDF2-SHA512</option></select></div>
+        <div class="field"><label>Iterações</label><input type="number" id="iters" value="100000" step="10000" min="10000" /></div>
+      </div>
+      <label class="chk"><input type="checkbox" id="useSymbols" checked /> Incluir símbolos (!@#$%...)</label>
+
+      <div class="btn-row" style="margin-top:10px;">
+        <button type="button" class="btn btn-primary" id="btnDerive">Derivar Senha</button>
+        <button type="button" class="btn" id="btnSaveProfile">Salvar Perfil do Serviço</button>
+      </div>
+
+      <div class="out-box">
+        <input type="password" id="derivedOut" readonly placeholder="Clique em Derivar Senha" />
+        <button type="button" class="btn" id="btnToggleShow">Mostrar</button>
+        <button type="button" class="btn btn-primary" id="btnCopyPass">Copiar</button>
+      </div>
+      <div id="entropyInfo" class="subtitle" style="margin-top:6px;"></div>
+    </section>
+
+    <section class="card">
+      <h2>Perfis de Serviços Salvos (Sem Senhas)</h2>
+      <div id="profileList" class="prof-list"></div>
+    </section>
+  </main>
+  <script src="./piercer_i18n.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
